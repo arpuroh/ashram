@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kailash Devi Ashram | Yoga & Wellness Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: url('https://placehold.co/1600x900/A0D2DB/FFFFFF?text=Serene+Ashram+Landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            font-size: 2.5rem; /* 40px */
+            font-weight: 700;
+            margin-bottom: 1.5rem; /* 24px */
+            text-align: center;
+        }
+        .section-subtitle {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 400;
+            color: #4A5568; /* gray-700 */
+            text-align: center;
+            margin-bottom: 3rem; /* 48px */
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .btn {
+            padding: 0.75rem 1.5rem; /* 12px 24px */
+            border-radius: 0.5rem; /* 8px */
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #4A90E2; /* A calming blue */
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #357ABD;
+        }
+        .btn-secondary {
+            background-color: #F0F4F8; /* Light gray-blue */
+            color: #4A90E2;
+            border: 1px solid #4A90E2;
+        }
+        .btn-secondary:hover {
+            background-color: #E1E8F0;
+        }
+        nav a {
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #4A90E2;
+        }
+        .active-nav-link {
+            color: #4A90E2;
+            font-weight: 600;
+        }
+        /* Custom gradient for specific sections if needed */
+        .calm-gradient {
+            background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%); /* Soft teal gradient */
+        }
+        .nature-gradient {
+            background: linear-gradient(135deg, #F0FFF0 0%, #D4EED1 100%); /* Soft green gradient */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-green-700">Kailash Devi Ashram</a>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#home" class="nav-link hover:text-green-600 active-nav-link">Home</a>
+                <a href="#about" class="nav-link hover:text-green-600">About Us</a>
+                <a href="#programs" class="nav-link hover:text-green-600">Programs</a>
+                <a href="#accommodations" class="nav-link hover:text-green-600">Stay</a>
+                <a href="#membership" class="nav-link hover:text-green-600">Membership</a>
+                <a href="#contact" class="nav-link hover:text-green-600">Contact</a>
+                <a href="#contact" class="btn btn-primary">Book Now</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <a href="#home" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Home</a>
+            <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">About Us</a>
+            <a href="#programs" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Programs</a>
+            <a href="#accommodations" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Stay</a>
+            <a href="#membership" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Membership</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Contact</a>
+            <a href="#contact" class="block px-6 py-3 text-white bg-green-600 hover:bg-green-700 text-center font-semibold">Book Now</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero-bg text-white min-h-screen flex items-center">
+        <div class="bg-black bg-opacity-50 w-full h-full flex items-center">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Find Your Inner Peace at Kailash Devi Ashram</h1>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                    Escape to a sanctuary of tranquility and embark on a transformative journey of yoga, meditation, and holistic wellness.
+                </p>
+                <a href="#programs" class="btn btn-primary text-lg px-8 py-4">Explore Our Retreats</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-green-700">Welcome to Your Sanctuary</h2>
+            <p class="section-subtitle text-gray-600">
+                Kailash Devi Ashram is more than just a retreat center; it's a community dedicated to promoting holistic health, mindfulness, and profound personal growth.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://placehold.co/600x400/C7E9B0/333333?text=Peaceful+Meditation+Garden" alt="Peaceful Meditation Garden at Kailash Devi Ashram" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+                <div class="text-gray-700 space-y-6">
+                    <h3 class="text-2xl font-semibold text-green-600">Our Vision & Philosophy</h3>
+                    <p>
+                        We believe in the transformative power of ancient wisdom combined with modern understanding. Our vision is to provide a nurturing space where individuals can disconnect from the chaos of daily life and reconnect with their inner selves. We focus on foundational yoga principles, diverse meditation techniques, and the profound philosophy behind these practices, allowing you to unwind, rejuvenate, and cultivate lasting well-being.
+                    </p>
+                     <p>Set in a tranquil nature spot, Kailash Devi Ashram offers a perfect escape for self-reflection, holistic healing, and connecting with a supportive community of like-minded individuals.</p>
+                    <h3 class="text-2xl font-semibold text-green-600 mt-6">Why Choose Our Retreat?</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>**Serene Location:** Nestled in nature, easily accessible from Atlanta, Commerce, and Athens.</li>
+                        <li>**Holistic Approach:** Programs designed for mental, physical, and emotional well-being.</li>
+                        <li>**Expert Guidance:** Experienced wellness coaches, nutritionists, and holistic practitioners.</li>
+                        <li>**Comfortable Stay:** 14 residential units ensuring a peaceful and restful experience.</li>
+                        <li>**Community Focused:** A supportive environment for personal growth and connection.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="py-16 md:py-24 nature-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-green-700">Nourish Your Mind, Body & Soul</h2>
+            <p class="section-subtitle text-gray-600">
+                We offer a diverse range of programs and retreats tailored to meet your individual needs and aspirations for wellness and growth.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <img src="https://placehold.co/600x400/D4EED1/333333?text=Yoga+Asana+Class" alt="Yoga Class" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-green-600">Yoga & Meditation Retreats</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Immerse yourself in daily yoga (Hatha, Vinyasa, Yin), guided meditations, and pranayama sessions. Suitable for all levels.</p>
+                        <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Learn More & Book <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/600x400/C7E9B0/333333?text=Wellness+Workshop" alt="Wellness Workshop" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-green-600">Wellness Workshops</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Explore nutrition, stress management, mindfulness techniques, and personal development strategies with our expert-led workshops.</p>
+                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Discover Workshops <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/600x400/B2DFDB/333333?text=Holistic+Therapy" alt="Holistic Therapy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-green-600">Holistic Therapies</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Rejuvenate with healing therapies such as therapeutic massage, acupuncture, and energy work designed to restore balance.</p>
+                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Explore Therapies <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                 <div class="card">
+                    <img src="https://placehold.co/600x400/A0D2DB/333333?text=Yoga+Teacher+Training" alt="Yoga Teacher Training" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-green-600">Yoga Teacher Training</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Deepen your practice and learn to share the transformative gift of yoga with our comprehensive teacher training programs.</p>
+                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Become a Teacher <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/600x400/E0F2F1/333333?text=Mindfulness+Retreat" alt="Mindfulness Retreat" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-green-600">Mindfulness & Stress Reduction</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Learn practical techniques to cultivate mindfulness, manage stress, and enhance your overall emotional well-being.</p>
+                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Find Calm <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                 <div class="card">
+                    <img src="https://placehold.co/600x400/F0FFF0/333333?text=Fitness+Bootcamp" alt="Fitness Bootcamp" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-green-600">Fitness & Rejuvenation</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Invigorate your body with fitness boot camps, nature walks, and outdoor activities designed to boost energy and vitality.</p>
+                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Get Active <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="accommodations" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-green-700">Rest & Recharge in Comfort</h2>
+            <p class="section-subtitle text-gray-600">
+                Our accommodations and facilities are designed to provide a peaceful and supportive environment for your retreat experience.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                <div>
+                    <h3 class="text-2xl font-semibold text-green-600 mb-4">Comfortable Residential Units</h3>
+                    <p class="text-gray-700 mb-4">
+                        We offer 14 well-appointed residential units, providing a tranquil space for rest and reflection. Choose from private rooms or shared lodgings, each designed with your comfort in mind. Wake up to the sounds of nature and enjoy a peaceful stay.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Private and shared room options</li>
+                        <li>Clean, comfortable, and minimalist design</li>
+                        <li>Serene views and natural light</li>
+                        <li>Access to communal relaxation areas</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://placehold.co/600x400/E0F7FA/333333?text=Cozy+Retreat+Room" alt="Comfortable Retreat Room" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-green-600 mb-6 text-center mt-12">Our Ashram Facilities</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="p-6 bg-green-50 rounded-lg shadow">
+                    <i class="fas fa-users fa-3x text-green-500 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Spacious Event Hall</h4>
+                    <p class="text-gray-600 text-sm">Ideal for group sessions, workshops, and community gatherings.</p>
+                </div>
+                <div class="p-6 bg-green-50 rounded-lg shadow">
+                    <i class="fas fa-om fa-3x text-green-500 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Serene Meditation Center</h4>
+                    <p class="text-gray-600 text-sm">A dedicated space for quiet contemplation and guided meditation practices.</p>
+                </div>
+                <div class="p-6 bg-green-50 rounded-lg shadow">
+                    <i class="fas fa-praying-hands fa-3x text-green-500 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Peaceful Praying Room</h4>
+                    <p class="text-gray-600 text-sm">A tranquil sanctuary for personal prayer and spiritual connection.</p>
+                </div>
+                <div class="p-6 bg-green-50 rounded-lg shadow">
+                    <i class="fas fa-leaf fa-3x text-green-500 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Nature Trails & Gardens</h4>
+                    <p class="text-gray-600 text-sm">Explore beautiful walking paths and connect with nature on our grounds.</p>
+                </div>
+                 <div class="p-6 bg-green-50 rounded-lg shadow">
+                    <i class="fas fa-store fa-3x text-green-500 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">On-Site Wellness Store</h4>
+                    <p class="text-gray-600 text-sm">Find yoga essentials, books, and local artisan crafts.</p>
+                </div>
+                 <div class="p-6 bg-green-50 rounded-lg shadow">
+                    <i class="fas fa-utensils fa-3x text-green-500 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Communal Dining Area</h4>
+                    <p class="text-gray-600 text-sm">Share nourishing meals and connect with fellow retreat participants.</p>
+                </div>
+            </div>
+             <div class="text-center mt-12">
+                <img src="https://placehold.co/1200x400/A0D2DB/333333?text=Aerial+View+of+Kailash+Devi+Ashram+Property" alt="Aerial view of Kailash Devi Ashram" class="rounded-lg shadow-xl w-full max-w-4xl mx-auto h-auto object-cover">
+                <p class="text-sm text-gray-500 mt-2">Artist's rendering of our beautiful Ashram grounds.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="membership" class="py-16 md:py-24 calm-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-teal-700">Join Our Wellness Community</h2>
+            <p class="section-subtitle text-gray-700">
+                Become a member of Kailash Devi Ashram and enjoy exclusive benefits, ongoing support, and a deeper connection to your wellness journey.
+            </p>
+            <div class="space-y-8">
+                <p class="text-center text-gray-700 max-w-3xl mx-auto">Our memberships are designed for individuals seeking relaxation, stress relief, personal growth, and a sustained commitment to their well-being. We welcome wellness enthusiasts, busy professionals, families, and anyone looking to deepen their yoga practice and embrace a holistic lifestyle.</p>
+
+                <h3 class="text-2xl font-semibold text-teal-600 text-center mt-8 mb-6">Membership Tiers</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-6 border-t-4 border-teal-500">
+                        <h4 class="text-xl font-bold text-teal-700 mb-2">Monthly Membership</h4>
+                        <p class="text-2xl font-bold text-teal-600 mb-3">$3,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
+                        <p class="text-gray-600 text-sm mb-4">One month continuous stay per year (subject to availability).</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
+                            <li>Unlimited access to yoga classes & workshops</li>
+                            <li>Priority booking for special events</li>
+                            <li>25% discount on private sessions</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 mb-4">12 available</p>
+                        <a href="#contact" class="btn btn-primary w-full bg-teal-500 hover:bg-teal-600">Inquire Now</a>
+                    </div>
+
+                    <div class="card p-6 border-t-4 border-teal-500">
+                        <h4 class="text-xl font-bold text-teal-700 mb-2">Weekdays Membership</h4>
+                        <p class="text-2xl font-bold text-teal-600 mb-3">$5,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
+                        <p class="text-gray-600 text-sm mb-4">5 days/month (Sun night - Fri morning, subject to availability).</p>
+                         <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
+                            <li>Unlimited access to yoga classes & workshops</li>
+                            <li>Priority booking for special events</li>
+                            <li>25% discount on private sessions</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 mb-4">4 available</p>
+                        <a href="#contact" class="btn btn-primary w-full bg-teal-500 hover:bg-teal-600">Inquire Now</a>
+                    </div>
+
+                    <div class="card p-6 border-t-4 border-teal-500">
+                        <h4 class="text-xl font-bold text-teal-700 mb-2">Weekend Membership</h4>
+                        <p class="text-2xl font-bold text-teal-600 mb-3">$6,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
+                        <p class="text-gray-600 text-sm mb-4">Weekend/month (Fri night - Sun morning, subject to availability).</p>
+                         <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
+                            <li>Unlimited access to yoga classes & workshops</li>
+                            <li>Priority booking for special events</li>
+                            <li>25% discount on private sessions</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 mb-4">4 available</p>
+                        <a href="#contact" class="btn btn-primary w-full bg-teal-500 hover:bg-teal-600">Inquire Now</a>
+                    </div>
+                    
+                    <div class="card p-6 border-t-4 border-orange-500 md:col-span-2 lg:col-span-1 lg:col-start-1"> <h4 class="text-xl font-bold text-orange-700 mb-2">7-Days Membership</h4>
+                        <p class="text-2xl font-bold text-orange-600 mb-3">$10,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
+                        <p class="text-gray-600 text-sm mb-4">7 nights/month (Sun night - Sun morning, subject to availability).</p>
+                         <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
+                            <li>Unlimited access to yoga classes & workshops</li>
+                            <li>Priority booking for special events</li>
+                            <li>25% discount on private sessions</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 mb-4">4 available</p>
+                        <a href="#contact" class="btn btn-primary w-full bg-orange-500 hover:bg-orange-600">Inquire Now</a>
+                    </div>
+
+                    <div class="card p-6 border-t-4 border-red-500 md:col-span-2 lg:col-span-2"> <h4 class="text-xl font-bold text-red-700 mb-2">Long-Term Supportive Membership</h4>
+                        <p class="text-2xl font-bold text-red-600 mb-3">$300,000 <span class="text-sm font-normal text-gray-600">/ one-time</span></p>
+                        <p class="text-gray-600 text-sm mb-4">Lifetime or max 15-year residency in one room. Voting member of operation committee.</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
+                            <li>Unlimited access to all offerings</li>
+                            <li>Priority booking for all events</li>
+                            <li>50% discount on private sessions & special events</li>
+                        </ul>
+                        <p class="text-xs text-red-500 font-semibold mb-4">Only 2 available</p>
+                        <a href="#contact" class="btn btn-primary w-full bg-red-500 hover:bg-red-600">Become a Patron</a>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-gray-600 mt-8">All membership plans come with flexible cancellation policies and the ability to upgrade or downgrade based on your needs. Please contact us for full details.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-green-700">The Kailash Devi Experience</h2>
+            <p class="section-subtitle text-gray-600">
+                Hear from our community and visualize your journey with us.
+            </p>
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-green-600 text-center mb-8">Words from Our Guests</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-green-50 p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-700 italic mb-4">"My week at Kailash Devi was truly transformative. The serene environment, incredible yoga sessions, and supportive community helped me reconnect with myself on a deeper level."</p>
+                        <p class="font-semibold text-green-700">- A. Patel (Guest)</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-700 italic mb-4">"The wellness workshops were insightful, and the holistic therapies left me feeling completely rejuvenated. The staff are so caring and knowledgeable."</p>
+                        <p class="font-semibold text-green-700">- J. Chen (Retreat Participant)</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-700 italic mb-4">"Kailash Devi Ashram is a hidden gem. The perfect place to escape, learn, and grow. I can't wait to return!"</p>
+                        <p class="font-semibold text-green-700">- M. Williams (Member)</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-green-600 text-center mb-8">Glimpses of Serenity</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <img src="https://placehold.co/400x300/D4EED1/333333?text=Yoga+by+the+Pond" alt="Yoga by the Pond" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
+                    <img src="https://placehold.co/400x300/C7E9B0/333333?text=Group+Meditation" alt="Group Meditation" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
+                    <img src="https://placehold.co/400x300/B2DFDB/333333?text=Nature+Walk+Path" alt="Nature Walk Path" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
+                    <img src="https://placehold.co/400x300/A0D2DB/333333?text=Community+Gathering" alt="Community Gathering" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
+                </div>
+                 <div class="text-center mt-4">
+                    <img src="https://placehold.co/600x400/D4E2D4/333333?text=Community+at+Kailash+Devi" alt="Community at Kailash Devi Ashram" class="rounded-lg shadow-xl w-full max-w-xl mx-auto h-auto object-cover">
+                    <p class="text-sm text-gray-500 mt-2">Smiles from our vibrant community (placeholder image).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="upcoming" class="py-16 md:py-24 nature-gradient">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="section-title text-green-700">Growing Our Sanctuary</h2>
+            <p class="section-subtitle text-gray-600">
+                We are excited about the future and continuously working to enhance your experience at Kailash Devi Ashram.
+            </p>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
+                <i class="fas fa-seedling fa-3x text-green-500 mb-6"></i>
+                <h3 class="text-2xl font-semibold text-green-600 mb-4">Future Enhancements</h3>
+                <p class="text-gray-700 mb-3">
+                    Our commitment to providing a holistic and spiritually enriching environment leads us to exciting new projects:
+                </p>
+                <ul class="list-none space-y-3 text-gray-700">
+                    <li class="flex items-center justify-center space-x-3">
+                        <i class="fas fa-gopuram text-green-500"></i>
+                        <span>Construction of a traditional **Shiv Mandir (Temple)** for prayer and spiritual discourses.</span>
+                    </li>
+                    <li class="flex items-center justify-center space-x-3">
+                        <i class="fas fa-concierge-bell text-green-500"></i>
+                        <span>Development of a dedicated **Bhojshala (Dining Hall)** to serve wholesome, sattvic meals.</span>
+                    </li>
+                </ul>
+                <p class="text-gray-700 mt-6">
+                    These additions will further enrich the ashram's atmosphere of peace, devotion, and community. Stay tuned for updates on our progress!
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-green-700">Connect With Us</h2>
+            <p class="section-subtitle text-gray-600">
+                We'd love to hear from you. Reach out to book your retreat, inquire about memberships, or ask any questions you may have.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-green-600 mb-6">Send Us a Message</h3>
+                    <form action="#" method="POST">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full bg-green-600 hover:bg-green-700">Send Message</button>
+                    </form>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Address</h3>
+                        <p class="text-gray-700 text-lg">Kailash Devi Ashram Yoga and Wellness Center</p>
+                        <p class="text-gray-700">2105 Highway 441 South,</p>
+                        <p class="text-gray-700">Commerce, GA 30529, USA</p>
+                        <p class="text-gray-700 mt-4"><i class="fas fa-phone-alt mr-2 text-green-500"></i> (123) 456-7890 (Example)</p>
+                        <p class="text-gray-700"><i class="fas fa-envelope mr-2 text-green-500"></i> info@kailashdeviashram.com (Example)</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-green-600 mb-4">Find Us</h3>
+                        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.7000000000003!2d-83.46000000000001!3d34.20000000000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f61b47a317b131%3A0xEXAMPLE!2s2105%20US-441%2C%20Commerce%2C%20GA%2030529!5e0!3m2!1sen!2sus!4v1678886400000!5m2!1sen!2sus" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Maps location of Kailash Devi Ashram"></iframe>
+                             </div>
+                         <p class="text-sm text-gray-500 mt-2">Conveniently located near Atlanta, Commerce retails, and the college town of Athens.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-6">
+                <a href="#" class="text-xl font-semibold text-white hover:text-green-400">Kailash Devi Ashram</a>
+            </div>
+            <div class="mb-6 space-x-6">
+                <a href="#" class="hover:text-green-400"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-green-400"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-green-400"><i class="fab fa-youtube"></i></a>
+            </div>
+            <nav class="mb-6 space-x-4 text-sm">
+                <a href="#home" class="hover:text-green-400">Home</a>
+                <a href="#about" class="hover:text-green-400">About</a>
+                <a href="#programs" class="hover:text-green-400">Programs</a>
+                <a href="#membership" class="hover:text-green-400">Membership</a>
+                <a href="#" class="hover:text-green-400">Privacy Policy</a>
+                <a href="#" class="hover:text-green-400">Terms of Service</a>
+            </nav>
+            <p class="text-sm">&copy; <span id="currentYear"></span> Kailash Devi Ashram. All Rights Reserved. Designed with <i class="fas fa-heart text-red-500"></i> for wellness.</p>
+            <p class="text-xs mt-2">2105 Highway 441 South, Commerce GA 30529</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelector('i').classList.remove('fa-times');
+                mobileMenuButton.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Update current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Active navigation link highlighting on scroll (simple version)
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('header nav a:not(.btn)'); // Exclude button from nav links
+        const mobileHeaderNavLinks = document.querySelectorAll('#mobile-menu a:not(.btn)');
+
+
+        function changeNav(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Desktop nav
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-nav-link', 'text-green-600', 'font-semibold');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active-nav-link', 'text-green-600', 'font-semibold');
+                        } else {
+                            link.classList.remove('text-green-600', 'font-semibold'); // Ensure others are default
+                        }
+                    });
+
+                    // Mobile nav
+                    mobileHeaderNavLinks.forEach(link => {
+                         link.classList.remove('bg-green-100', 'text-green-700', 'font-semibold');
+                         if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('bg-green-100', 'text-green-700', 'font-semibold');
+                        }
+                    });
+                }
+            });
+        }
+
+        const options = {
+            threshold: 0.3 // When 30% of the section is visible
+        };
+        const observer = new IntersectionObserver(changeNav, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initial active link for home section on page load
+        // Check if window.location.hash is empty or #home
+        if(window.location.hash === '' || window.location.hash === '#home') {
+            document.querySelector('header nav a[href="#home"]').classList.add('active-nav-link', 'text-green-600', 'font-semibold');
+            document.querySelector('#mobile-menu a[href="#home"]').classList.add('bg-green-100', 'text-green-700', 'font-semibold');
+        }
+
+
+    </script>
+</body>
+</html>
