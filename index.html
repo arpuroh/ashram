@@ -4,592 +4,422 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Lotus Ranch | Yoga & Wellness Center</title>
+    <link rel="icon" href="https://i.imgur.com/5CYQMLf.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- UNIFIED & REFINED COLOR PALETTE --- */
+        :root {
+            --brand-primary: #A89BBE; /* A soft, blended purple from the logo */
+            --brand-accent: #8C82C0; /* A slightly more saturated accent for buttons */
+            --brand-accent-hover: #7368A6; /* Darker accent for hover */
+            --brand-text-primary: #3D3B4E; /* Main text color */
+            --brand-text-secondary: #6B7280; /* Lighter text for subtitles */
+            --bg-light: #F9F7FA; /* A very light, warm off-white with a hint of purple */
+            --bg-white: #FFFFFF;
+            --border-color: #E5E7EB;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            color: var(--brand-text-primary);
+            background-color: var(--bg-light);
         }
+
+        /* --- BACKGROUNDS & LAYOUT --- */
         .hero-bg {
-            background-image: url('https://placehold.co/1600x900/A0D2DB/FFFFFF?text=Serene+Ashram+Landscape');
+            background-image: url('https://placehold.co/1600x900/A89BBE/FFFFFF?text=A+Sanctuary+for+the+Soul');
             background-size: cover;
             background-position: center;
         }
+        .subtle-gradient {
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        .section-title, .card h3, .card h4, h3.font-semibold {
+            font-family: 'Playfair Display', serif;
+        }
         .section-title {
-            font-size: 2.5rem; /* 40px */
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 1.5rem; /* 24px */
+            margin-bottom: 1.5rem;
             text-align: center;
+            color: var(--brand-primary);
         }
         .section-subtitle {
-            font-size: 1.25rem; /* 20px */
+            font-size: 1.25rem;
             font-weight: 400;
-            color: #4A5568; /* gray-700 */
+            color: var(--brand-text-secondary);
             text-align: center;
-            margin-bottom: 3rem; /* 48px */
+            margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
-        .card {
-            background-color: white;
-            border-radius: 0.75rem; /* 12px */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+        
+        /* --- INTERACTIVE ELEMENTS & ANIMATIONS --- */
         .btn {
-            padding: 0.75rem 1.5rem; /* 12px 24px */
-            border-radius: 0.5rem; /* 8px */
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
             font-weight: 600;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             text-align: center;
+            display: inline-block;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .btn-primary {
-            background-color: #4A90E2; /* A calming blue */
+            background-color: var(--brand-accent);
             color: white;
         }
         .btn-primary:hover {
-            background-color: #357ABD;
+            background-color: var(--brand-accent-hover);
         }
-        .btn-secondary {
-            background-color: #F0F4F8; /* Light gray-blue */
-            color: #4A90E2;
-            border: 1px solid #4A90E2;
-        }
-        .btn-secondary:hover {
-            background-color: #E1E8F0;
-        }
-        nav a {
+        
+        /* --- NAVIGATION --- */
+        .nav-link {
+            color: var(--brand-text-primary);
             transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 4px;
+            font-weight: 500;
         }
-        nav a:hover {
-            color: #4A90E2;
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--brand-primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after,
+        .active-nav-link:after {
+            width: 100%;
+        }
+        .nav-link:hover,
+        .active-nav-link {
+            color: var(--brand-primary);
         }
         .active-nav-link {
-            color: #4A90E2;
             font-weight: 600;
         }
-        /* Custom gradient for specific sections if needed */
-        .calm-gradient {
-            background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%); /* Soft teal gradient */
+        
+        /* --- CARDS & COMPONENTS --- */
+        .card {
+            background-color: var(--bg-white);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(168, 155, 190, 0.07), 0 4px 6px -2px rgba(168, 155, 190, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
         }
-        .nature-gradient {
-            background: linear-gradient(135deg, #F0FFF0 0%, #D4EED1 100%); /* Soft green gradient */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(168, 155, 190, 0.1), 0 10px 10px -5px rgba(168, 155, 190, 0.05);
+        }
+        .card h3, .card h4 {
+             color: var(--brand-primary);
+             font-size: 1.5rem;
+        }
+        .card a.font-semibold {
+            color: var(--brand-accent);
+        }
+        .card a.font-semibold:hover {
+            color: var(--brand-accent-hover);
+        }
+        .icon-style {
+            color: var(--brand-primary);
+        }
+
+        /* --- SCROLL ANIMATIONS --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: 0.2s;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-light">
 
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-green-700">The Lotus Ranch</a>
-            <nav class="hidden md:flex space-x-6 items-center">
-                <a href="#home" class="nav-link hover:text-green-600 active-nav-link">Home</a>
-                <a href="#about" class="nav-link hover:text-green-600">About Us</a>
-                <a href="#programs" class="nav-link hover:text-green-600">Programs</a>
-                <a href="#accommodations" class="nav-link hover:text-green-600">Stay</a>
-                <a href="#membership" class="nav-link hover:text-green-600">Membership</a>
-                <a href="#contact" class="nav-link hover:text-green-600">Contact</a>
-                <a href="#contact" class="btn btn-primary">Book Now</a>
+    <!-- HEADER & NAVIGATION -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="https://i.imgur.com/5CYQMLf.png" alt="The Lotus Ranch Logo" class="h-16 w-auto">
+                <span class="hidden sm:block text-2xl font-bold" style="color: var(--brand-primary); font-family: 'Playfair Display', serif;">The Lotus Ranch</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="nav-link active-nav-link">Home</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#programs" class="nav-link">Programs</a>
+                <a href="#membership" class="nav-link">Membership</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#contact" class="btn btn-primary ml-4">Book Now</a>
             </nav>
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                <button id="mobile-menu-button" class="focus:outline-none" style="color: var(--brand-primary);">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
             </div>
         </div>
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <a href="#home" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Home</a>
-            <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">About Us</a>
-            <a href="#programs" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Programs</a>
-            <a href="#accommodations" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Stay</a>
-            <a href="#membership" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Membership</a>
-            <a href="#contact" class="block px-6 py-3 text-gray-700 hover:bg-green-50 nav-link-mobile">Contact</a>
-            <a href="#contact" class="block px-6 py-3 text-white bg-green-600 hover:bg-green-700 text-center font-semibold">Book Now</a>
+            <a href="#home" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 nav-link-mobile">Home</a>
+            <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 nav-link-mobile">About Us</a>
+            <a href="#programs" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 nav-link-mobile">Programs</a>
+            <a href="#membership" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 nav-link-mobile">Membership</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 nav-link-mobile">Contact</a>
+            <div class="p-4">
+                <a href="#contact" class="btn btn-primary w-full">Book Now</a>
+            </div>
         </div>
     </header>
 
-    <section id="home" class="hero-bg text-white min-h-screen flex items-center">
-        <div class="bg-black bg-opacity-50 w-full h-full flex items-center">
-            <div class="container mx-auto px-6 py-20 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Find Your Inner Peace at The Lotus Ranch</h1>
-                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-                    Escape to a sanctuary of tranquility and embark on a transformative journey of yoga, meditation, and holistic wellness.
-                </p>
-                <a href="#programs" class="btn btn-primary text-lg px-8 py-4">Explore Our Retreats</a>
-            </div>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-bg text-white min-h-[90vh] flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="relative z-10 container mx-auto px-6 py-20 text-center flex flex-col items-center">
+            <img src="https://i.imgur.com/5CYQMLf.png" alt="The Lotus Ranch Logo" class="h-40 w-auto mb-8 opacity-80">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight" style="font-family: 'Playfair Display', serif;">Find Your Inner Peace</h1>
+            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto">
+                Escape to a sanctuary of tranquility and embark on a transformative journey of yoga, meditation, and holistic wellness.
+            </p>
+            <a href="#programs" class="btn btn-primary text-lg px-10 py-4">Explore Our Retreats</a>
         </div>
     </section>
 
-    <section id="about" class="py-16 md:py-24 bg-white">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 md:py-28 bg-white fade-in-section">
         <div class="container mx-auto px-6">
-            <h2 class="section-title text-green-700">Welcome to Your Sanctuary</h2>
-            <p class="section-subtitle text-gray-600">
+            <h2 class="section-title">Welcome to Your Sanctuary</h2>
+            <p class="section-subtitle">
                 The Lotus Ranch is more than just a retreat center; it's a community dedicated to promoting holistic health, mindfulness, and profound personal growth.
             </p>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <img src="https://placehold.co/600x400/C7E9B0/333333?text=Peaceful+Meditation+Garden" alt="Peaceful Meditation Garden at The Lotus Ranch" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    <img src="https://placehold.co/600x400/D0B3DD/FFFFFF?text=Meditation+Garden" alt="Peaceful Meditation Garden at The Lotus Ranch" class="rounded-lg shadow-xl w-full h-auto object-cover">
                 </div>
-                <div class="text-gray-700 space-y-6">
-                    <h3 class="text-2xl font-semibold text-green-600">Our Vision & Philosophy</h3>
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-semibold" style="color: var(--brand-primary);">Our Vision & Philosophy</h3>
                     <p>
-                        We believe in the transformative power of ancient wisdom combined with modern understanding. Our vision is to provide a nurturing space where individuals can disconnect from the chaos of daily life and reconnect with their inner selves. We focus on foundational yoga principles, diverse meditation techniques, and the profound philosophy behind these practices, allowing you to unwind, rejuvenate, and cultivate lasting well-being.
+                        We believe in the transformative power of ancient wisdom. Our vision is to provide a nurturing space where individuals can disconnect from the chaos of daily life and reconnect with their inner selves. We focus on foundational yoga principles, diverse meditation techniques, and the profound philosophy behind these practices.
                     </p>
-                     <p>Set in a tranquil nature spot, The Lotus Ranch offers a perfect escape for self-reflection, holistic healing, and connecting with a supportive community of like-minded individuals.</p>
-                    <h3 class="text-2xl font-semibold text-green-600 mt-6">Why Choose Our Retreat?</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>**Serene Location:** Nestled in nature, easily accessible from Atlanta, Commerce, and Athens.</li>
-                        <li>**Holistic Approach:** Programs designed for mental, physical, and emotional well-being.</li>
-                        <li>**Expert Guidance:** Experienced wellness coaches, nutritionists, and holistic practitioners.</li>
-                        <li>**Comfortable Stay:** 14 residential units ensuring a peaceful and restful experience.</li>
-                        <li>**Community Focused:** A supportive environment for personal growth and connection.</li>
-                    </ul>
+                    <p>Set in a tranquil nature spot, The Lotus Ranch offers a perfect escape for self-reflection, holistic healing, and connecting with a supportive community.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="programs" class="py-16 md:py-24 nature-gradient">
+    <!-- PROGRAMS SECTION -->
+    <section id="programs" class="py-20 md:py-28 subtle-gradient fade-in-section">
         <div class="container mx-auto px-6">
-            <h2 class="section-title text-green-700">Nourish Your Mind, Body & Soul</h2>
-            <p class="section-subtitle text-gray-600">
+            <h2 class="section-title">Nourish Your Mind, Body & Soul</h2>
+            <p class="section-subtitle">
                 We offer a diverse range of programs and retreats tailored to meet your individual needs and aspirations for wellness and growth.
             </p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card">
-                    <img src="https://placehold.co/600x400/D4EED1/333333?text=Yoga+Asana+Class" alt="Yoga Class" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-600">Yoga & Meditation Retreats</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Immerse yourself in daily yoga (Hatha, Vinyasa, Yin), guided meditations, and pranayama sessions. Suitable for all levels.</p>
-                        <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Learn More & Book <i class="fas fa-arrow-right ml-1"></i></a>
+                <!-- Program Card 1 -->
+                <div class="card fade-in-section">
+                    <img src="https://placehold.co/600x400/F8D7DA/3D3B4E?text=Yoga+Retreats" alt="Yoga Class" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="font-semibold mb-2">Yoga & Meditation Retreats</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Immerse yourself in daily yoga (Hatha, Vinyasa, Yin), guided meditations, and pranayama sessions.</p>
+                        <a href="#contact" class="font-semibold text-sm">Learn More & Book <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="https://placehold.co/600x400/C7E9B0/333333?text=Wellness+Workshop" alt="Wellness Workshop" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-600">Wellness Workshops</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Explore nutrition, stress management, mindfulness techniques, and personal development strategies with our expert-led workshops.</p>
-                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Discover Workshops <i class="fas fa-arrow-right ml-1"></i></a>
+                <!-- Program Card 2 -->
+                <div class="card fade-in-section" style="transition-delay: 0.3s;">
+                    <img src="https://placehold.co/600x400/D4EED1/3D3B4E?text=Wellness+Workshops" alt="Wellness Workshop" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="font-semibold mb-2">Wellness Workshops</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Explore nutrition, stress management, and mindfulness techniques with our expert-led workshops.</p>
+                        <a href="#contact" class="font-semibold text-sm">Discover Workshops <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="https://placehold.co/600x400/B2DFDB/333333?text=Holistic+Therapy" alt="Holistic Therapy" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-600">Holistic Therapies</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Rejuvenate with healing therapies such as therapeutic massage, acupuncture, and energy work designed to restore balance.</p>
-                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Explore Therapies <i class="fas fa-arrow-right ml-1"></i></a>
-                    </div>
-                </div>
-                 <div class="card">
-                    <img src="https://placehold.co/600x400/A0D2DB/333333?text=Yoga+Teacher+Training" alt="Yoga Teacher Training" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-600">Yoga Teacher Training</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Deepen your practice and learn to share the transformative gift of yoga with our comprehensive teacher training programs.</p>
-                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Become a Teacher <i class="fas fa-arrow-right ml-1"></i></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://placehold.co/600x400/E0F2F1/333333?text=Mindfulness+Retreat" alt="Mindfulness Retreat" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-600">Mindfulness & Stress Reduction</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Learn practical techniques to cultivate mindfulness, manage stress, and enhance your overall emotional well-being.</p>
-                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Find Calm <i class="fas fa-arrow-right ml-1"></i></a>
-                    </div>
-                </div>
-                 <div class="card">
-                    <img src="https://placehold.co/600x400/F0FFF0/333333?text=Fitness+Bootcamp" alt="Fitness Bootcamp" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-600">Fitness & Rejuvenation</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Invigorate your body with fitness boot camps, nature walks, and outdoor activities designed to boost energy and vitality.</p>
-                         <a href="#contact" class="text-green-500 hover:text-green-700 font-semibold text-sm">Get Active <i class="fas fa-arrow-right ml-1"></i></a>
+                <!-- Program Card 3 -->
+                <div class="card fade-in-section" style="transition-delay: 0.4s;">
+                    <img src="https://placehold.co/600x400/D1E8F9/3D3B4E?text=Teacher+Training" alt="Yoga Teacher Training" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="font-semibold mb-2">Yoga Teacher Training</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Deepen your practice and learn to share the gift of yoga with our comprehensive training programs.</p>
+                        <a href="#contact" class="font-semibold text-sm">Become a Teacher <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="accommodations" class="py-16 md:py-24 bg-white">
+    <!-- MEMBERSHIP SECTION -->
+    <section id="membership" class="py-20 md:py-28 bg-white fade-in-section">
         <div class="container mx-auto px-6">
-            <h2 class="section-title text-green-700">Rest & Recharge in Comfort</h2>
-            <p class="section-subtitle text-gray-600">
-                Our accommodations and facilities are designed to provide a peaceful and supportive environment for your retreat experience.
+            <h2 class="section-title">Join Our Wellness Community</h2>
+            <p class="section-subtitle">
+                Become a member and enjoy exclusive benefits, ongoing support, and a deeper connection to your wellness journey.
             </p>
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
-                <div>
-                    <h3 class="text-2xl font-semibold text-green-600 mb-4">Comfortable Residential Units</h3>
-                    <p class="text-gray-700 mb-4">
-                        We offer 14 well-appointed residential units, providing a tranquil space for rest and reflection. Choose from private rooms or shared lodgings, each designed with your comfort in mind. Wake up to the sounds of nature and enjoy a peaceful stay.
-                    </p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Private and shared room options</li>
-                        <li>Clean, comfortable, and minimalist design</li>
-                        <li>Serene views and natural light</li>
-                        <li>Access to communal relaxation areas</li>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <!-- Membership Tier 1 -->
+                <div class="card p-6">
+                    <h4 class="font-bold mb-2">Monthly</h4>
+                    <p class="text-3xl font-bold mb-3" style="color: var(--brand-text-primary);">$3,000 <span class="text-sm font-normal text-gray-500">/ year</span></p>
+                    <p class="text-gray-600 text-sm mb-4">One month continuous stay per year.</p>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-600 mb-6">
+                        <li>Unlimited access to classes</li>
+                        <li>Priority event booking</li>
+                        <li>25% off private sessions</li>
                     </ul>
+                    <a href="#contact" class="btn btn-primary w-full">Inquire Now</a>
                 </div>
-                <div>
-                    <img src="https://placehold.co/600x400/E0F7FA/333333?text=Cozy+Retreat+Room" alt="Comfortable Retreat Room" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                <!-- Membership Tier 2 (Highlighted) -->
+                <div class="card p-8 ring-2 ring-offset-2" style="border-color: var(--brand-primary); --tw-ring-color: var(--brand-primary);">
+                    <p class="absolute top-0 -translate-y-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full" style="background-color: var(--brand-primary);">Most Popular</p>
+                    <h4 class="font-bold mb-2">Weekdays</h4>
+                    <p class="text-3xl font-bold mb-3" style="color: var(--brand-text-primary);">$5,000 <span class="text-sm font-normal text-gray-500">/ year</span></p>
+                    <p class="text-gray-600 text-sm mb-4">5 days/month (Sun-Fri).</p>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-600 mb-6">
+                        <li>Unlimited access to classes</li>
+                        <li>Priority event booking</li>
+                        <li>25% off private sessions</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary w-full">Inquire Now</a>
                 </div>
-            </div>
-
-            <h3 class="text-2xl font-semibold text-green-600 mb-6 text-center mt-12">Our Ashram Facilities</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-                <div class="p-6 bg-green-50 rounded-lg shadow">
-                    <i class="fas fa-users fa-3x text-green-500 mb-4"></i>
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Spacious Event Hall</h4>
-                    <p class="text-gray-600 text-sm">Ideal for group sessions, workshops, and community gatherings.</p>
+                <!-- Membership Tier 3 -->
+                <div class="card p-6">
+                    <h4 class="font-bold mb-2">Weekend</h4>
+                    <p class="text-3xl font-bold mb-3" style="color: var(--brand-text-primary);">$6,000 <span class="text-sm font-normal text-gray-500">/ year</span></p>
+                    <p class="text-gray-600 text-sm mb-4">One weekend/month (Fri-Sun).</p>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-600 mb-6">
+                        <li>Unlimited access to classes</li>
+                        <li>Priority event booking</li>
+                        <li>25% off private sessions</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary w-full">Inquire Now</a>
                 </div>
-                <div class="p-6 bg-green-50 rounded-lg shadow">
-                    <i class="fas fa-om fa-3x text-green-500 mb-4"></i>
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Serene Meditation Center</h4>
-                    <p class="text-gray-600 text-sm">A dedicated space for quiet contemplation and guided meditation practices.</p>
-                </div>
-                <div class="p-6 bg-green-50 rounded-lg shadow">
-                    <i class="fas fa-praying-hands fa-3x text-green-500 mb-4"></i>
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Peaceful Praying Room</h4>
-                    <p class="text-gray-600 text-sm">A tranquil sanctuary for personal prayer and spiritual connection.</p>
-                </div>
-                <div class="p-6 bg-green-50 rounded-lg shadow">
-                    <i class="fas fa-leaf fa-3x text-green-500 mb-4"></i>
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Nature Trails & Gardens</h4>
-                    <p class="text-gray-600 text-sm">Explore beautiful walking paths and connect with nature on our grounds.</p>
-                </div>
-                 <div class="p-6 bg-green-50 rounded-lg shadow">
-                    <i class="fas fa-store fa-3x text-green-500 mb-4"></i>
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">On-Site Wellness Store</h4>
-                    <p class="text-gray-600 text-sm">Find yoga essentials, books, and local artisan crafts.</p>
-                </div>
-                 <div class="p-6 bg-green-50 rounded-lg shadow">
-                    <i class="fas fa-utensils fa-3x text-green-500 mb-4"></i>
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Communal Dining Area</h4>
-                    <p class="text-gray-600 text-sm">Share nourishing meals and connect with fellow retreat participants.</p>
-                </div>
-            </div>
-             <div class="text-center mt-12">
-                <img src="https://placehold.co/1200x400/A0D2DB/333333?text=Aerial+View+of+The+Lotus+Ranch+Property" alt="Aerial view of The Lotus Ranch" class="rounded-lg shadow-xl w-full max-w-4xl mx-auto h-auto object-cover">
-                <p class="text-sm text-gray-500 mt-2">Artist's rendering of our beautiful Ashram grounds.</p>
             </div>
         </div>
     </section>
 
-    <section id="membership" class="py-16 md:py-24 calm-gradient">
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 md:py-28 subtle-gradient fade-in-section">
         <div class="container mx-auto px-6">
-            <h2 class="section-title text-teal-700">Join Our Wellness Community</h2>
-            <p class="section-subtitle text-gray-700">
-                Become a member of The Lotus Ranch and enjoy exclusive benefits, ongoing support, and a deeper connection to your wellness journey.
-            </p>
-            <div class="space-y-8">
-                <p class="text-center text-gray-700 max-w-3xl mx-auto">Our memberships are designed for individuals seeking relaxation, stress relief, personal growth, and a sustained commitment to their well-being. We welcome wellness enthusiasts, busy professionals, families, and anyone looking to deepen their yoga practice and embrace a holistic lifestyle.</p>
-
-                <h3 class="text-2xl font-semibold text-teal-600 text-center mt-8 mb-6">Membership Tiers</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card p-6 border-t-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-700 mb-2">Monthly Membership</h4>
-                        <p class="text-2xl font-bold text-teal-600 mb-3">$3,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
-                        <p class="text-gray-600 text-sm mb-4">One month continuous stay per year (subject to availability).</p>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
-                            <li>Unlimited access to yoga classes & workshops</li>
-                            <li>Priority booking for special events</li>
-                            <li>25% discount on private sessions</li>
-                        </ul>
-                        <p class="text-xs text-gray-500 mb-4">12 available</p>
-                        <a href="#contact" class="btn btn-primary w-full bg-teal-500 hover:bg-teal-600">Inquire Now</a>
-                    </div>
-
-                    <div class="card p-6 border-t-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-700 mb-2">Weekdays Membership</h4>
-                        <p class="text-2xl font-bold text-teal-600 mb-3">$5,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
-                        <p class="text-gray-600 text-sm mb-4">5 days/month (Sun night - Fri morning, subject to availability).</p>
-                         <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
-                            <li>Unlimited access to yoga classes & workshops</li>
-                            <li>Priority booking for special events</li>
-                            <li>25% discount on private sessions</li>
-                        </ul>
-                        <p class="text-xs text-gray-500 mb-4">4 available</p>
-                        <a href="#contact" class="btn btn-primary w-full bg-teal-500 hover:bg-teal-600">Inquire Now</a>
-                    </div>
-
-                    <div class="card p-6 border-t-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-700 mb-2">Weekend Membership</h4>
-                        <p class="text-2xl font-bold text-teal-600 mb-3">$6,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
-                        <p class="text-gray-600 text-sm mb-4">Weekend/month (Fri night - Sun morning, subject to availability).</p>
-                         <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
-                            <li>Unlimited access to yoga classes & workshops</li>
-                            <li>Priority booking for special events</li>
-                            <li>25% discount on private sessions</li>
-                        </ul>
-                        <p class="text-xs text-gray-500 mb-4">4 available</p>
-                        <a href="#contact" class="btn btn-primary w-full bg-teal-500 hover:bg-teal-600">Inquire Now</a>
-                    </div>
-                    
-                    <div class="card p-6 border-t-4 border-orange-500 md:col-span-2 lg:col-span-1 lg:col-start-1"> <h4 class="text-xl font-bold text-orange-700 mb-2">7-Days Membership</h4>
-                        <p class="text-2xl font-bold text-orange-600 mb-3">$10,000 <span class="text-sm font-normal text-gray-600">/ year</span></p>
-                        <p class="text-gray-600 text-sm mb-4">7 nights/month (Sun night - Sun morning, subject to availability).</p>
-                         <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
-                            <li>Unlimited access to yoga classes & workshops</li>
-                            <li>Priority booking for special events</li>
-                            <li>25% discount on private sessions</li>
-                        </ul>
-                        <p class="text-xs text-gray-500 mb-4">4 available</p>
-                        <a href="#contact" class="btn btn-primary w-full bg-orange-500 hover:bg-orange-600">Inquire Now</a>
-                    </div>
-
-                    <div class="card p-6 border-t-4 border-red-500 md:col-span-2 lg:col-span-2"> <h4 class="text-xl font-bold text-red-700 mb-2">Long-Term Supportive Membership</h4>
-                        <p class="text-2xl font-bold text-red-600 mb-3">$300,000 <span class="text-sm font-normal text-gray-600">/ one-time</span></p>
-                        <p class="text-gray-600 text-sm mb-4">Lifetime or max 15-year residency in one room. Voting member of operation committee.</p>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600 mb-6">
-                            <li>Unlimited access to all offerings</li>
-                            <li>Priority booking for all events</li>
-                            <li>50% discount on private sessions & special events</li>
-                        </ul>
-                        <p class="text-xs text-red-500 font-semibold mb-4">Only 2 available</p>
-                        <a href="#contact" class="btn btn-primary w-full bg-red-500 hover:bg-red-600">Become a Patron</a>
-                    </div>
-                </div>
-                <p class="text-center text-sm text-gray-600 mt-8">All membership plans come with flexible cancellation policies and the ability to upgrade or downgrade based on your needs. Please contact us for full details.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="experience" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title text-green-700">The Lotus Ranch Experience</h2>
-            <p class="section-subtitle text-gray-600">
-                Hear from our community and visualize your journey with us.
-            </p>
-            <div class="mb-12">
-                <h3 class="text-2xl font-semibold text-green-600 text-center mb-8">Words from Our Guests</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-                        <p class="text-gray-700 italic mb-4">"My week at The Lotus Ranch was truly transformative. The serene environment, incredible yoga sessions, and supportive community helped me reconnect with myself on a deeper level."</p>
-                        <p class="font-semibold text-green-700">- A. Patel (Guest)</p>
-                    </div>
-                    <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-                        <p class="text-gray-700 italic mb-4">"The wellness workshops were insightful, and the holistic therapies left me feeling completely rejuvenated. The staff are so caring and knowledgeable."</p>
-                        <p class="font-semibold text-green-700">- J. Chen (Retreat Participant)</p>
-                    </div>
-                    <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-                        <p class="text-gray-700 italic mb-4">"The Lotus Ranch is a hidden gem. The perfect place to escape, learn, and grow. I can't wait to return!"</p>
-                        <p class="font-semibold text-green-700">- M. Williams (Member)</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3 class="text-2xl font-semibold text-green-600 text-center mb-8">Glimpses of Serenity</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <img src="https://placehold.co/400x300/D4EED1/333333?text=Yoga+by+the+Pond" alt="Yoga by the Pond" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
-                    <img src="https://placehold.co/400x300/C7E9B0/333333?text=Group+Meditation" alt="Group Meditation" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
-                    <img src="https://placehold.co/400x300/B2DFDB/333333?text=Nature+Walk+Path" alt="Nature Walk Path" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
-                    <img src="https://placehold.co/400x300/A0D2DB/333333?text=Community+Gathering" alt="Community Gathering" class="rounded-lg shadow-md object-cover w-full h-48 hover:opacity-90 transition-opacity">
-                </div>
-                 <div class="text-center mt-4">
-                    <img src="https://placehold.co/600x400/D4E2D4/333333?text=Community+at+The+Lotus+Ranch" alt="Community at The Lotus Ranch" class="rounded-lg shadow-xl w-full max-w-xl mx-auto h-auto object-cover">
-                    <p class="text-sm text-gray-500 mt-2">Smiles from our vibrant community (placeholder image).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="upcoming" class="py-16 md:py-24 nature-gradient">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="section-title text-green-700">Growing Our Sanctuary</h2>
-            <p class="section-subtitle text-gray-600">
-                We are excited about the future and continuously working to enhance your experience at The Lotus Ranch.
-            </p>
-            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
-                <i class="fas fa-seedling fa-3x text-green-500 mb-6"></i>
-                <h3 class="text-2xl font-semibold text-green-600 mb-4">Future Enhancements</h3>
-                <p class="text-gray-700 mb-3">
-                    Our commitment to providing a holistic and spiritually enriching environment leads us to exciting new projects:
-                </p>
-                <ul class="list-none space-y-3 text-gray-700">
-                    <li class="flex items-center justify-center space-x-3">
-                        <i class="fas fa-gopuram text-green-500"></i>
-                        <span>Construction of a traditional **Shiv Mandir (Temple)** for prayer and spiritual discourses.</span>
-                    </li>
-                    <li class="flex items-center justify-center space-x-3">
-                        <i class="fas fa-concierge-bell text-green-500"></i>
-                        <span>Development of a dedicated **Bhojshala (Dining Hall)** to serve wholesome, sattvic meals.</span>
-                    </li>
-                </ul>
-                <p class="text-gray-700 mt-6">
-                    These additions will further enrich the ashram's atmosphere of peace, devotion, and community. Stay tuned for updates on our progress!
-                </p>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="contact" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title text-green-700">Connect With Us</h2>
-            <p class="section-subtitle text-gray-600">
-                We'd love to hear from you. Reach out to book your retreat, inquire about memberships, or ask any questions you may have.
+            <h2 class="section-title">Connect With Us</h2>
+            <p class="section-subtitle">
+                We'd love to hear from you. Reach out to book your retreat, inquire about memberships, or ask any questions.
             </p>
             <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-gray-50 p-8 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-green-600 mb-6">Send Us a Message</h3>
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-3xl font-semibold mb-6" style="color: var(--brand-primary);">Send Us a Message</h3>
                     <form action="#" method="POST">
                         <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                            <label for="name" class="block font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-300 focus:border-purple-300" required>
                         </div>
                         <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                            <label for="email" class="block font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-300 focus:border-purple-300" required>
                         </div>
                         <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required></textarea>
+                            <label for="message" class="block font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-300 focus:border-purple-300" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-full bg-green-600 hover:bg-green-700">Send Message</button>
+                        <button type="submit" class="btn btn-primary w-full">Send Message</button>
                     </form>
                 </div>
-                <div class="space-y-8">
+                <!-- Contact Info & Map -->
+                <div class="space-y-8 mt-6 md:mt-0">
                     <div>
-                        <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Address</h3>
-                        <p class="text-gray-700 text-lg">The Lotus Ranch Yoga and Wellness Center</p>
-                        <p class="text-gray-700">2105 Highway 441 South,</p>
-                        <p class="text-gray-700">Commerce, GA 30529, USA</p>
-                        <p class="text-gray-700 mt-4"><i class="fas fa-phone-alt mr-2 text-green-500"></i> 678-482-9604</p>
-                        <p class="text-gray-700"><i class="fas fa-envelope mr-2 text-green-500"></i> lotusranchashram@gmail.com</p>
+                        <h3 class="text-3xl font-semibold mb-4" style="color: var(--brand-primary);">Contact Information</h3>
+                        <p class="text-lg flex items-start"><i class="fas fa-map-marker-alt mr-3 mt-1 icon-style"></i><span>The Lotus Ranch<br>2105 Highway 441 South, Commerce, GA 30529</span></p>
+                        <p class="mt-4 text-lg"><i class="fas fa-phone-alt mr-3 icon-style"></i>678-482-9604</p>
+                        <p class="mt-2 text-lg"><i class="fas fa-envelope mr-3 icon-style"></i>lotusranchashram@gmail.com</p>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold text-green-600 mb-4">Find Us</h3>
                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
-                             <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3301.705408815033!2d-83.4437661!3d34.1538782!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f60fbb1eae3549%3A0x21ec0a556df7aded!2sThe%20Lotus%20Ranch!5e0!3m2!1sen!2sus!4v1754861579721!5m2!1sen!2sus"
-        width="100%"
-        height="350"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3301.705408815033!2d-83.4437661!3d34.1538782!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f60fbb1eae3549%3A0x21ec0a556df7aded!2sThe%20Lotus%20Ranch!5e0!3m2!1sen!2sus!4v1754861579721!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                         <p class="text-sm text-gray-500 mt-2">Conveniently located near Atlanta, Commerce retails, and the college town of Athens.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-gray-300 py-12">
+    <!-- FOOTER -->
+    <footer class="text-white py-12" style="background-color: var(--brand-text-primary);">
         <div class="container mx-auto px-6 text-center">
-            <div class="mb-6">
-                <a href="#" class="text-xl font-semibold text-white hover:text-green-400">The Lotus Ranch</a>
-            </div>
+            <a href="#home" class="flex items-center justify-center space-x-3 mb-6">
+                <img src="https://i.imgur.com/5CYQMLf.png" alt="The Lotus Ranch Logo" class="h-12 w-auto">
+                <span class="text-xl font-semibold">The Lotus Ranch</span>
+            </a>
             <div class="mb-6 space-x-6">
-                <a href="#" class="hover:text-green-400"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="hover:text-green-400"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-green-400"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
             </div>
-            <nav class="mb-6 space-x-4 text-sm">
-                <a href="#home" class="hover:text-green-400">Home</a>
-                <a href="#about" class="hover:text-green-400">About</a>
-                <a href="#programs" class="hover:text-green-400">Programs</a>
-                <a href="#membership" class="hover:text-green-400">Membership</a>
-                <a href="#" class="hover:text-green-400">Privacy Policy</a>
-                <a href="#" class="hover:text-green-400">Terms of Service</a>
-            </nav>
-            <p class="text-sm">© <span id="currentYear"></span> The Lotus Ranch. All Rights Reserved. Designed with <i class="fas fa-heart text-red-500"></i> for wellness.</p>
-            <p class="text-xs mt-2">2105 Highway 441 South, Commerce GA 30529</p>
+            <p class="text-sm text-gray-400">&copy; <span id="currentYear"></span> The Lotus Ranch. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // --- Mobile menu toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Toggle icon
             const icon = mobileMenuButton.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
-        // Close mobile menu when a link is clicked
-        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
-        mobileNavLinks.forEach(link => {
+        // --- Close mobile menu when a link is clicked ---
+        document.querySelectorAll('.nav-link-mobile').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
-                mobileMenuButton.querySelector('i').classList.remove('fa-times');
                 mobileMenuButton.querySelector('i').classList.add('fa-bars');
+                mobileMenuButton.querySelector('i').classList.remove('fa-times');
             });
         });
         
-        // Update current year in footer
+        // --- Update current year in footer ---
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Active navigation link highlighting on scroll (simple version)
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('header nav a:not(.btn)'); // Exclude button from nav links
-        const mobileHeaderNavLinks = document.querySelectorAll('#mobile-menu a:not(.btn)');
-
-
-        function changeNav(entries) {
+        // --- Active navigation link highlighting on scroll ---
+        const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    
-                    // Desktop nav
-                    navLinks.forEach(link => {
-                        link.classList.remove('active-nav-link', 'text-green-600', 'font-semibold');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active-nav-link', 'text-green-600', 'font-semibold');
-                        } else {
-                            link.classList.remove('text-green-600', 'font-semibold'); // Ensure others are default
-                        }
-                    });
-
-                    // Mobile nav
-                    mobileHeaderNavLinks.forEach(link => {
-                         link.classList.remove('bg-green-100', 'text-green-700', 'font-semibold');
-                         if (link.getAttribute('href') === `#${id}`) {
-                             link.classList.add('bg-green-100', 'text-green-700', 'font-semibold');
+                    document.querySelectorAll('header nav a.nav-link').forEach(link => {
+                        link.classList.remove('active-nav-link');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active-nav-link');
                         }
                     });
                 }
             });
-        }
+        }, { rootMargin: "-50% 0px -50% 0px" });
+        document.querySelectorAll('section[id]').forEach(section => navObserver.observe(section));
 
-        const options = {
-            threshold: 0.3 // When 30% of the section is visible
-        };
-        const observer = new IntersectionObserver(changeNav, options);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Initial active link for home section on page load
-        // Check if window.location.hash is empty or #home
-        if(window.location.hash === '' || window.location.hash === '#home') {
-            document.querySelector('header nav a[href="#home"]').classList.add('active-nav-link', 'text-green-600', 'font-semibold');
-            document.querySelector('#mobile-menu a[href="#home"]').classList.add('bg-green-100', 'text-green-700', 'font-semibold');
-        }
-
-
+        // --- Fade-in animation on scroll ---
+        const animationObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(section => animationObserver.observe(section));
     </script>
 </body>
 </html>
